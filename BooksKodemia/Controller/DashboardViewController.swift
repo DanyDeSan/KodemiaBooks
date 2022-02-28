@@ -20,6 +20,8 @@ class DashboardViewController: UIViewController {
     private var booksDataSource: [Book] = [Book]()
     
     private var viewSections: [String] = [Constants.booksString, Constants.authorsString, Constants.categoriesString]
+    
+    private var currentSection: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +84,13 @@ class DashboardViewController: UIViewController {
             contentTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
             contentTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.padding)
         ])
-        
+        sectionsButton.addTarget(self, action: #selector(sectionDidChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func sectionDidChanged(_ sender: UISegmentedControl) {
+        self.currentSection = sender.selectedSegmentIndex
+        print(currentSection)
+        // Hacer otra llamada a API
     }
     
 }
