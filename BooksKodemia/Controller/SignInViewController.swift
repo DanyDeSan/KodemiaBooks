@@ -75,7 +75,7 @@ class SignInViewController: UIViewController {
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate( [
-            buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constants.padding),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.padding),
             buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.widthProportion)
         ])
@@ -89,6 +89,24 @@ class SignInViewController: UIViewController {
 //        //Aqui asignamos la fuente
 //        confirmButton.titleLabel?.font = UIFont(name: "Arial", size: 15.0)
         
-    }
+        self.confirmButton.addTarget(self, action: #selector(onAcceptButtonTap), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(onCancelButtonTap), for: .touchUpInside)
         
+    }
+    
+    @objc func onAcceptButtonTap() {
+        dismissAndContinue()
+    }
+    
+    @objc func onCancelButtonTap() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func dismissAndContinue() {
+        let dashboardNavigationController: UINavigationController = UINavigationController()
+        let dashboardViewController: DashboardViewController = DashboardViewController()
+        dashboardNavigationController.setViewControllers([dashboardViewController], animated: true)
+        dashboardNavigationController.modalPresentationStyle = .overFullScreen
+        present(dashboardNavigationController, animated: true, completion: nil)
+    }
 }
