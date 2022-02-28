@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15238EB927CC1AC300B4BDC2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EB827CC1AC300B4BDC2 /* DashboardViewController.swift */; };
+		15238EBB27CC21AE00B4BDC2 /* APIDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EBA27CC21AE00B4BDC2 /* APIDataManager.swift */; };
+		15238EBD27CC21C800B4BDC2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EBC27CC21C800B4BDC2 /* Parser.swift */; };
+		15238EBF27CC245600B4BDC2 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EBE27CC245600B4BDC2 /* Endpoints.swift */; };
+		15238EC327CC357400B4BDC2 /* BooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EC227CC357400B4BDC2 /* BooksResponse.swift */; };
 		8A68757527CC0D6100F731B4 /* BooksResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68757427CC0D6100F731B4 /* BooksResultCell.swift */; };
 		8AA4EC3827C30164004FF814 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4EC3727C30164004FF814 /* SignInViewController.swift */; };
 		8AF6000D27C2DB6200B8FCCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF6000C27C2DB6200B8FCCC /* AppDelegate.swift */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15238EB827CC1AC300B4BDC2 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		15238EBA27CC21AE00B4BDC2 /* APIDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataManager.swift; sourceTree = "<group>"; };
+		15238EBC27CC21C800B4BDC2 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		15238EBE27CC245600B4BDC2 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		15238EC227CC357400B4BDC2 /* BooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResponse.swift; sourceTree = "<group>"; };
 		8A68757427CC0D6100F731B4 /* BooksResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResultCell.swift; sourceTree = "<group>"; };
 		8AA4EC3727C30164004FF814 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8AF6000927C2DB6200B8FCCC /* BooksKodemia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksKodemia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15238EC027CC2A9B00B4BDC2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				15238EBA27CC21AE00B4BDC2 /* APIDataManager.swift */,
+				15238EBC27CC21C800B4BDC2 /* Parser.swift */,
+				15238EBE27CC245600B4BDC2 /* Endpoints.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		15238EC127CC2AB400B4BDC2 /* Response Models */ = {
+			isa = PBXGroup;
+			children = (
+				15238EC227CC357400B4BDC2 /* BooksResponse.swift */,
+			);
+			path = "Response Models";
+			sourceTree = "<group>";
+		};
 		8AF6000027C2DB6200B8FCCC = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +111,9 @@
 		8AF6002127C2E1DB00B8FCCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				15238EC127CC2AB400B4BDC2 /* Response Models */,
 				8AF6002427C2FB6F00B8FCCC /* Constants.swift */,
+				15238EC027CC2A9B00B4BDC2 /* Networking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +131,7 @@
 			children = (
 				8AF6001027C2DB6200B8FCCC /* LoginViewController.swift */,
 				8AA4EC3727C30164004FF814 /* SignInViewController.swift */,
+				15238EB827CC1AC300B4BDC2 /* DashboardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,10 +207,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF6001127C2DB6200B8FCCC /* LoginViewController.swift in Sources */,
+				15238EB927CC1AC300B4BDC2 /* DashboardViewController.swift in Sources */,
 				8AF6000D27C2DB6200B8FCCC /* AppDelegate.swift in Sources */,
 				8AF6000F27C2DB6200B8FCCC /* SceneDelegate.swift in Sources */,
+				15238EC327CC357400B4BDC2 /* BooksResponse.swift in Sources */,
+				15238EBF27CC245600B4BDC2 /* Endpoints.swift in Sources */,
 				8AA4EC3827C30164004FF814 /* SignInViewController.swift in Sources */,
+				15238EBD27CC21C800B4BDC2 /* Parser.swift in Sources */,
 				8AF6002527C2FB6F00B8FCCC /* Constants.swift in Sources */,
+				15238EBB27CC21AE00B4BDC2 /* APIDataManager.swift in Sources */,
 				8A68757527CC0D6100F731B4 /* BooksResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

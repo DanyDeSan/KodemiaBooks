@@ -85,6 +85,20 @@ class SignInViewController: UIViewController {
             button.backgroundColor = .blue
         }
         
+        // Placeholders of textfields
+        userNameInputTextField.placeholder = Constants.userString
+        userEmailInputTextField.placeholder = Constants.emailString
+        passwordInputTextField.placeholder = Constants.passwordString
+        confirmPasswordInputTextField.placeholder = Constants.confirmPasswordString
+        
+        // Button titles
+        confirmButton.setTitle(Constants.acceptString, for: .normal)
+        cancelButton.setTitle(Constants.cancelString, for: .normal)
+        
+//        //Aqui asignamos un color
+//        confirmButton.setTitleColor(UIColor.red, for: .normal)
+//        //Aqui asignamos la fuente
+//        confirmButton.titleLabel?.font = UIFont(name: "Arial", size: 15.0)
         
     }
     

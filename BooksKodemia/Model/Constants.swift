@@ -14,6 +14,14 @@ struct Constants {
     static let passwordString: String = "Password"
     static let logIn: String = "Log In"
     static let signIn: String = "Sign In"
+    static let emailString: String = "E-mail"
+    static let confirmPasswordString: String = "Confirm Password"
+    static let acceptString: String = "Accept"
+    static let cancelString: String = "Cancel"
+    static let dashboardTitleString: String = "Dashboard"
+    static let booksString: String = "Books"
+    static let authorsString: String = "Authors"
+    static let categoriesString: String = "Categories"
     
     //MARK: - UI Sizes
     static let buttonSize: CGFloat = 50

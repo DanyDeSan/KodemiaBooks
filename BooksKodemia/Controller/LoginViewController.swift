@@ -78,6 +78,7 @@ class LoginViewController: UIViewController {
         ])
         
         signInButton.addTarget(self, action: #selector(onSignInButtonTap), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(onLoginButtonTap), for: .touchUpInside)
         
     }
     
@@ -90,6 +91,20 @@ class LoginViewController: UIViewController {
     func goToSignIn() {
         let signInViewController: SignInViewController = SignInViewController()
         self.present(signInViewController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func onLoginButtonTap() {
+        goToDashboardView()
+    }
+    
+    func goToDashboardView() {
+        let dashboardNavigationController: UINavigationController = UINavigationController()
+        let dashboardViewController: DashboardViewController = DashboardViewController()
+        dashboardNavigationController.setViewControllers([dashboardViewController], animated: true)
+        dashboardNavigationController.modalPresentationStyle = .fullScreen
+        present(dashboardNavigationController, animated: true, completion: nil)
+        
     }
 
 }
