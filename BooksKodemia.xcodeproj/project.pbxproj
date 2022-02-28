@@ -14,6 +14,10 @@
 		15238EC327CC357400B4BDC2 /* BooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15238EC227CC357400B4BDC2 /* BooksResponse.swift */; };
 		8A68757527CC0D6100F731B4 /* BooksResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68757427CC0D6100F731B4 /* BooksResultCell.swift */; };
 		8AA4EC3827C30164004FF814 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4EC3727C30164004FF814 /* SignInViewController.swift */; };
+		8ACC11E527CC913000A5F651 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC11E227CC912F00A5F651 /* InputTextField.swift */; };
+		8ACC11E627CC913000A5F651 /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC11E327CC913000A5F651 /* FilledButton.swift */; };
+		8ACC11E727CC913000A5F651 /* UnfilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC11E427CC913000A5F651 /* UnfilledButton.swift */; };
+		8ACC11E927CC918300A5F651 /* UIColor++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACC11E827CC918300A5F651 /* UIColor++.swift */; };
 		8AF6000D27C2DB6200B8FCCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF6000C27C2DB6200B8FCCC /* AppDelegate.swift */; };
 		8AF6000F27C2DB6200B8FCCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF6000E27C2DB6200B8FCCC /* SceneDelegate.swift */; };
 		8AF6001127C2DB6200B8FCCC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF6001027C2DB6200B8FCCC /* LoginViewController.swift */; };
@@ -30,6 +34,10 @@
 		15238EC227CC357400B4BDC2 /* BooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResponse.swift; sourceTree = "<group>"; };
 		8A68757427CC0D6100F731B4 /* BooksResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResultCell.swift; sourceTree = "<group>"; };
 		8AA4EC3727C30164004FF814 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8ACC11E227CC912F00A5F651 /* InputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		8ACC11E327CC913000A5F651 /* FilledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		8ACC11E427CC913000A5F651 /* UnfilledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfilledButton.swift; sourceTree = "<group>"; };
+		8ACC11E827CC918300A5F651 /* UIColor++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor++.swift"; sourceTree = "<group>"; };
 		8AF6000927C2DB6200B8FCCC /* BooksKodemia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksKodemia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF6000C27C2DB6200B8FCCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF6000E27C2DB6200B8FCCC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 		8AF6002127C2E1DB00B8FCCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8ACC11E827CC918300A5F651 /* UIColor++.swift */,
 				15238EC127CC2AB400B4BDC2 /* Response Models */,
 				8AF6002427C2FB6F00B8FCCC /* Constants.swift */,
 				15238EC027CC2A9B00B4BDC2 /* Networking */,
@@ -122,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				8A68757427CC0D6100F731B4 /* BooksResultCell.swift */,
+				8ACC11E327CC913000A5F651 /* FilledButton.swift */,
+				8ACC11E227CC912F00A5F651 /* InputTextField.swift */,
+				8ACC11E427CC913000A5F651 /* UnfilledButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,12 +222,16 @@
 				15238EB927CC1AC300B4BDC2 /* DashboardViewController.swift in Sources */,
 				8AF6000D27C2DB6200B8FCCC /* AppDelegate.swift in Sources */,
 				8AF6000F27C2DB6200B8FCCC /* SceneDelegate.swift in Sources */,
+				8ACC11E527CC913000A5F651 /* InputTextField.swift in Sources */,
+				8ACC11E627CC913000A5F651 /* FilledButton.swift in Sources */,
 				15238EC327CC357400B4BDC2 /* BooksResponse.swift in Sources */,
 				15238EBF27CC245600B4BDC2 /* Endpoints.swift in Sources */,
+				8ACC11E927CC918300A5F651 /* UIColor++.swift in Sources */,
 				8AA4EC3827C30164004FF814 /* SignInViewController.swift in Sources */,
 				15238EBD27CC21C800B4BDC2 /* Parser.swift in Sources */,
 				8AF6002527C2FB6F00B8FCCC /* Constants.swift in Sources */,
 				15238EBB27CC21AE00B4BDC2 /* APIDataManager.swift in Sources */,
+				8ACC11E727CC913000A5F651 /* UnfilledButton.swift in Sources */,
 				8A68757527CC0D6100F731B4 /* BooksResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

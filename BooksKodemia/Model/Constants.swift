@@ -28,8 +28,11 @@ struct Constants {
     static let padding: CGFloat = 20
     static let widthProportion: CGFloat = 0.8
     static let textFieldHeight: CGFloat = 40
+    static let cornerRadius: CGFloat = 10
+    static let borderWidth: CGFloat = 2
     
     //MARK: - UI Colors
     static let buttonBackgroundColor: UIColor = .blue
+    static let borderColor:UIColor = .systemBlue
     
 }
