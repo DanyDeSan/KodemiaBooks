@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
         buttons.forEach { button in
             buttonsStackView.addArrangedSubview(button)
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: Constants.textFieldHeight).isActive = true
+            button.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
         }
         
         signInButton.addTarget(self, action: #selector(onSignInButtonTap), for: .touchUpInside)

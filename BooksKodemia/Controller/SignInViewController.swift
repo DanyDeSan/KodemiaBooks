@@ -12,13 +12,13 @@ class SignInViewController: UIViewController {
     private lazy var contentStackView: UIStackView = UIStackView()
     private lazy var buttonStackView: UIStackView = UIStackView()
     //MARK: Textfields
-    private lazy var userNameInputTextField: UITextField = UITextField()
-    private lazy var userEmailInputTextField: UITextField = UITextField()
-    private lazy var passwordInputTextField: UITextField = UITextField()
-    private lazy var confirmPasswordInputTextField: UITextField = UITextField()
+    private lazy var userNameInputTextField: InputTextField = InputTextField(frame: CGRect(), placeHolder: Constants.userString)
+    private lazy var userEmailInputTextField: InputTextField = InputTextField(frame: CGRect(), placeHolder: Constants.emailString)
+    private lazy var passwordInputTextField: InputTextField = InputTextField(frame: CGRect(), placeHolder: Constants.passwordString)
+    private lazy var confirmPasswordInputTextField: InputTextField = InputTextField(frame: CGRect(), placeHolder: Constants.confirmPasswordString)
     //MARK: UIButtons
-    private lazy var confirmButton: UIButton = UIButton()
-    private lazy var cancelButton: UIButton = UIButton()
+    private lazy var confirmButton: FilledButton = FilledButton(title: Constants.acceptString, frame: CGRect())
+    private lazy var cancelButton: UnfilledButton = UnfilledButton(title: Constants.cancelString, frame: CGRect())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class SignInViewController: UIViewController {
         self.view.addSubview(contentStackView)
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.padding),
+            contentStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.widthProportion)
         ])
@@ -82,18 +82,7 @@ class SignInViewController: UIViewController {
         
         buttonArray.forEach { button in
             button.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
-            button.backgroundColor = .blue
         }
-        
-        // Placeholders of textfields
-        userNameInputTextField.placeholder = Constants.userString
-        userEmailInputTextField.placeholder = Constants.emailString
-        passwordInputTextField.placeholder = Constants.passwordString
-        confirmPasswordInputTextField.placeholder = Constants.confirmPasswordString
-        
-        // Button titles
-        confirmButton.setTitle(Constants.acceptString, for: .normal)
-        cancelButton.setTitle(Constants.cancelString, for: .normal)
         
 //        //Aqui asignamos un color
 //        confirmButton.setTitleColor(UIColor.red, for: .normal)
@@ -101,5 +90,5 @@ class SignInViewController: UIViewController {
 //        confirmButton.titleLabel?.font = UIFont(name: "Arial", size: 15.0)
         
     }
-    
+        
 }
