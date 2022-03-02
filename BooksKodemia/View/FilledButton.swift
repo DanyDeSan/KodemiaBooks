@@ -20,7 +20,7 @@ class FilledButton: UIButton {
     
     func initUI(title: String) {
         setTitle(title, for: .normal)
-        backgroundColor = .systemBlue
+        backgroundColor = .kodemiaCyan
         layer.masksToBounds = true
         layer.cornerRadius = Constants.cornerRadius
     }

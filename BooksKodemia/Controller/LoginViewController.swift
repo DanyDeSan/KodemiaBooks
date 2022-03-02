@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     
     private lazy var signInButton: UnfilledButton = UnfilledButton(title: Constants.signIn, frame: CGRect())
     
+    private lazy var loginTitle: UILabel = UILabel()
+    
     private lazy var textFieldsStackView: UIStackView = UIStackView()
     
     private lazy var buttonsStackView: UIStackView = UIStackView()
@@ -36,22 +38,33 @@ class LoginViewController: UIViewController {
         let textFields: [InputTextField] = [userInputTextField,passwordInputTextField]
         // TextFields Stack view
         view.addSubview(textFieldsStackView)
+        view.addSubview(loginTitle)
         textFieldsStackView.axis = .vertical
         textFieldsStackView.spacing = Constants.padding
         textFieldsStackView.alignment = .fill
-        textFieldsStackView.distribution = .fillEqually
+        textFieldsStackView.distribution = .fillProportionally
         
+        loginTitle.text = Constants.kodemiaBooks
+        loginTitle.font = UIFont(name: "Arial", size: 60)
+        loginTitle.numberOfLines = 2
+        loginTitle.lineBreakStrategy = .pushOut
         textFields.forEach { inputTextField in
             textFieldsStackView.addArrangedSubview(inputTextField)
         }
         
         textFieldsStackView.translatesAutoresizingMaskIntoConstraints = false
+        loginTitle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             textFieldsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textFieldsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            textFieldsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.widthProportion)
+            textFieldsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.widthProportion),
+            loginTitle.heightAnchor.constraint(equalToConstant: 250),
+            loginTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.padding),
+            loginTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginTitle.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Constants.widthProportion)
         ])
+        
         
         textFields.forEach { inputTextfield in
             inputTextfield.translatesAutoresizingMaskIntoConstraints = false

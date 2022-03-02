@@ -22,6 +22,7 @@ struct Constants {
     static let booksString: String = "Books"
     static let authorsString: String = "Authors"
     static let categoriesString: String = "Categories"
+    static let kodemiaBooks:String = "kodemia_\nbooks"
     
     //MARK: - UI Sizes
     static let buttonSize: CGFloat = 50

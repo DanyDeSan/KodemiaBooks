@@ -48,7 +48,7 @@ class DashboardViewController: UIViewController {
     
     private let apiDataManager: APIDataManager = APIDataManager()
     
-    private var booksDataSource: [Book] = [Book]()
+    private var booksDataSource: [TableViewViewable] = [TableViewViewable]()
     
     private var viewSections: [DashboardSection] = DashboardSection.allCases
     
@@ -57,19 +57,59 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        makeAPIRequest()
-        // TODO: Complete UI
+        requestBooks()
     }
     
     func initUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = Constants.dashboardTitleString
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func makeAPIRequest() {
+    func requestBooks() {
         createActivityIndicator()
         hideTableView()
         apiDataManager.performRequest(endpoint: .books) { [weak self] (response: BooksResponse) in
+            self?.removeActivityIndicator()
+            self?.booksDataSource = response.data
+            // If falls into the if let statement, means
+            // that the table has already be shown before
+            // and it is hidden now
+            if let _ = self?.contentTableView.superview {
+                self?.showAndReloadTableView()
+                return
+            }
+            self?.completeUI()
+        } onError: { [weak self] error in
+            self?.removeActivityIndicator()
+            print(error)
+        }
+    }
+    
+    func requestAuthors() {
+        createActivityIndicator()
+        hideTableView()
+        apiDataManager.performRequest(endpoint: .authors) { [weak self] (response: AuthorsResponse) in
+            self?.removeActivityIndicator()
+            self?.booksDataSource = response.data
+            // If falls into the if let statement, means
+            // that the table has already be shown before
+            // and it is hidden now
+            if let _ = self?.contentTableView.superview {
+                self?.showAndReloadTableView()
+                return
+            }
+            self?.completeUI()
+        } onError: { [weak self] error in
+            self?.removeActivityIndicator()
+            print(error)
+        }
+    }
+    
+    func requestCategories() {
+        createActivityIndicator()
+        hideTableView()
+        apiDataManager.performRequest(endpoint: .categories) { [weak self] (response: CategoriesResponse) in
             self?.removeActivityIndicator()
             self?.booksDataSource = response.data
             // If falls into the if let statement, means
@@ -114,6 +154,10 @@ class DashboardViewController: UIViewController {
         view.addSubview(sectionsButton)
         sectionsButton.selectedSegmentIndex = 0
         sectionsButton.translatesAutoresizingMaskIntoConstraints = false
+        sectionsButton.backgroundColor = .kodemiaCyanFaded
+        sectionsButton.selectedSegmentTintColor = .kodemiaCyan
+        sectionsButton.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        sectionsButton.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         
         NSLayoutConstraint.activate([
             sectionsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.padding),
@@ -134,23 +178,38 @@ class DashboardViewController: UIViewController {
             contentTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.padding)
         ])
         
-        contentTableView.layer.borderColor = UIColor.systemGray4.cgColor
+        contentTableView.layer.borderColor = UIColor.kodemiaCyan.cgColor
         contentTableView.layer.borderWidth = Constants.borderWidth
         contentTableView.layer.cornerRadius = Constants.cornerRadius
         contentTableView.layer.masksToBounds = true
         sectionsButton.addTarget(self, action: #selector(sectionDidChanged(_:)), for: .valueChanged)
+        navigationItem.setRightBarButtonItems([UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(self.dismissView))], animated: true)
     }
     
     @objc func sectionDidChanged(_ sender: UISegmentedControl) {
         let indexSelection: Int = sender.selectedSegmentIndex
         currentSection = viewSections[indexSelection]
-        makeAPIRequest()
+        switch indexSelection {
+        case 0:
+            requestBooks()
+        case 1:
+            requestAuthors()
+        case 2:
+            requestCategories()
+        default:
+            break
+        }
+    }
+    @objc func dismissView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension DashboardViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension DashboardViewController: UITableViewDataSource {
@@ -164,9 +223,12 @@ extension DashboardViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title: String = booksDataSource[indexPath.row].attributes.title
+        let title: String = booksDataSource[indexPath.row].name
         let cell: UITableViewCell = UITableViewCell()
         cell.textLabel?.text = title
+        let backgroundColorView: UIView = UIView()
+        backgroundColorView.backgroundColor = .kodemiaCyanFaded
+        cell.selectedBackgroundView = backgroundColorView
         return cell
     }
 }

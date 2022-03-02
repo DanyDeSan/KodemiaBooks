@@ -15,13 +15,13 @@ struct BooksResponse: Codable {
 // MARK: - Datum
 struct Book: Codable {
     let type, id: String
-    let attributes: Attributes
-    let relationships: Relationships
-    let links: DatumLinks
+    let attributes: BookAttributes
+    let relationships: BookRelationships
+    let links: BookLinks
 }
 
 // MARK: - Attributes
-struct Attributes: Codable {
+struct BookAttributes: Codable {
     let title, slug, content: String
 
     enum CodingKeys: String, CodingKey {
@@ -30,7 +30,7 @@ struct Attributes: Codable {
 }
 
 // MARK: - DatumLinks
-struct DatumLinks: Codable {
+struct BookLinks: Codable {
     let linksSelf: String
 
     enum CodingKeys: String, CodingKey {
@@ -39,17 +39,17 @@ struct DatumLinks: Codable {
 }
 
 // MARK: - Relationships
-struct Relationships: Codable {
-    let authors, categories: Authors
+struct BookRelationships: Codable {
+    let authors, categories: BookAuthors
 }
 
 // MARK: - Authors
-struct Authors: Codable {
-    let links: AuthorsLinks
+struct BookAuthors: Codable {
+    let links: BookAuthorsLinks
 }
 
 // MARK: - AuthorsLinks
-struct AuthorsLinks: Codable {
+struct BookAuthorsLinks: Codable {
     let linksSelf, related: String
 
     enum CodingKeys: String, CodingKey {

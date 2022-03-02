@@ -30,7 +30,7 @@ class InputTextField: UITextField {
         layer.masksToBounds = true
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
-        layer.borderColor = Constants.borderColor.cgColor
+        layer.borderColor = UIColor.kodemiaCyan.cgColor
     }
     
     

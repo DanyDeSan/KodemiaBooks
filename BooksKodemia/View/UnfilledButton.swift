@@ -22,12 +22,12 @@ class UnfilledButton: UIButton {
     
     func initUI(title: String) {
         setTitle(title, for: .normal)
-        setTitleColor(.systemBlue, for: .normal)
+        setTitleColor(.kodemiaCyan, for: .normal)
         backgroundColor = .clear
         layer.masksToBounds = true
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
-        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.borderColor = UIColor.kodemiaCyan.cgColor
     }
 }
 
