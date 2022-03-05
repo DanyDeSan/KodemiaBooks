@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Category: TableViewViewable {
+extension Category: ResultViewable {
     var name: String {
         return self.attributes.name
     }

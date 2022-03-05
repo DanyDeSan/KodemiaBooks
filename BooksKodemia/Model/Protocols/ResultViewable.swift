@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TableViewViewable {
+protocol ResultViewable {
     var name: String { get }
     var id: String { get }
     var dataType: DataType { get }

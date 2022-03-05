@@ -48,7 +48,7 @@ class DashboardViewController: UIViewController {
     
     private let apiDataManager: APIDataManager = APIDataManager()
     
-    private var booksDataSource: [TableViewViewable] = [TableViewViewable]()
+    private var dataSource: [ResultViewable] = [ResultViewable]()
     
     private var viewSections: [DashboardSection] = DashboardSection.allCases
     
@@ -71,7 +71,7 @@ class DashboardViewController: UIViewController {
         hideTableView()
         apiDataManager.performRequest(endpoint: .books) { [weak self] (response: BooksResponse) in
             self?.removeActivityIndicator()
-            self?.booksDataSource = response.data
+            self?.dataSource = response.data
             // If falls into the if let statement, means
             // that the table has already be shown before
             // and it is hidden now
@@ -91,7 +91,7 @@ class DashboardViewController: UIViewController {
         hideTableView()
         apiDataManager.performRequest(endpoint: .authors) { [weak self] (response: AuthorsResponse) in
             self?.removeActivityIndicator()
-            self?.booksDataSource = response.data
+            self?.dataSource = response.data
             // If falls into the if let statement, means
             // that the table has already be shown before
             // and it is hidden now
@@ -111,7 +111,7 @@ class DashboardViewController: UIViewController {
         hideTableView()
         apiDataManager.performRequest(endpoint: .categories) { [weak self] (response: CategoriesResponse) in
             self?.removeActivityIndicator()
-            self?.booksDataSource = response.data
+            self?.dataSource = response.data
             // If falls into the if let statement, means
             // that the table has already be shown before
             // and it is hidden now
@@ -209,6 +209,10 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let model: ResultViewable = dataSource[indexPath.row]
+        let detailView: DetailViewController = DetailViewController()
+        detailView.viewableResultFromDashboard = model
+        navigationController?.pushViewController(detailView, animated: true)
     }
 }
 
@@ -219,11 +223,11 @@ extension DashboardViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return booksDataSource.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title: String = booksDataSource[indexPath.row].name
+        let title: String = dataSource[indexPath.row].name
         let cell: UITableViewCell = UITableViewCell()
         cell.textLabel?.text = title
         let backgroundColorView: UIView = UIView()

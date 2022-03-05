@@ -23,6 +23,7 @@ struct Constants {
     static let authorsString: String = "Authors"
     static let categoriesString: String = "Categories"
     static let kodemiaBooks:String = "kodemia_\nbooks"
+    static let detailViewTitle: String = "Detail"
     
     //MARK: - UI Sizes
     static let buttonSize: CGFloat = 50

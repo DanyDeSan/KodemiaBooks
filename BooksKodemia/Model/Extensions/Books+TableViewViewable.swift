@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Book: TableViewViewable {
+extension Book: ResultViewable {
     var name: String {
         return self.attributes.title
     }
