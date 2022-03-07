@@ -37,4 +37,10 @@ struct Constants {
     static let buttonBackgroundColor: UIColor = .blue
     static let borderColor:UIColor = .systemBlue
     
+    //MARK: - Others
+    static let headerFonts: UIFont? = UIFont(name: "Arial", size: 60)
+    static let detailViewHeaderFont: UIFont? = UIFont(name: "Arial", size: 40)
+    static let sectionBodyFont: UIFont? = UIFont(name: "Arial", size: 14)
+    static let detailBodyFont: UIFont? = UIFont(name: "Arial", size: 18)
+    
 }

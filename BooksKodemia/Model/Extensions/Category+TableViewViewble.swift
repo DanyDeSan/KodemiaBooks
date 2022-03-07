@@ -18,4 +18,8 @@ extension Category: ResultViewable {
     var dataType: DataType {
         return .Category
     }
+    
+    var content: String? {
+        return nil
+    }
 }

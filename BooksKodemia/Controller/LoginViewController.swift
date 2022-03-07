@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         textFieldsStackView.distribution = .fillProportionally
         
         loginTitle.text = Constants.kodemiaBooks
-        loginTitle.font = UIFont(name: "Arial", size: 60)
+        loginTitle.font = Constants.headerFonts
         loginTitle.numberOfLines = 2
         loginTitle.lineBreakStrategy = .pushOut
         textFields.forEach { inputTextField in

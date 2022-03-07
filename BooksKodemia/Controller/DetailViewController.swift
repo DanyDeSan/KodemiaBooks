@@ -14,6 +14,9 @@ class DetailViewController: UIViewController {
     
     private var apiDataManager: APIDataManager = APIDataManager()
     
+    private var headerTitle: DetailViewHeader?
+    private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class DetailViewController: UIViewController {
     
     private func requestDetailInfo() {
         guard let model: ResultViewable = viewableResultFromDashboard else { return }
+        createActivityIndicator()
         switch model.dataType {
         case .Category: requestCategoryDetail()
         case .Book: requestBookDetail()
@@ -38,8 +42,9 @@ class DetailViewController: UIViewController {
     
     private func requestBookDetail() {
         guard let slug: String = viewableResultFromDashboard?.slug else { return }
-        apiDataManager.performRequest(endpoint: .singleBooks(bookSlug: slug)) { (dataResponse: SingleBookResponse) in
-            print(dataResponse)
+        apiDataManager.performRequest(endpoint: .singleBooks(bookSlug: slug)) { [weak self] (dataResponse: SingleBookResponse) in
+            self?.fetchedResult = dataResponse.data
+            self?.completeUI()
         } onError: { error in
             print(error)
         }
@@ -48,8 +53,9 @@ class DetailViewController: UIViewController {
     
     private func requestCategoryDetail() {
         guard let id: String = viewableResultFromDashboard?.id else { return }
-        apiDataManager.performRequest(endpoint: .singleCategory(categoryID: id)) { (category: SingleCategoryResponse) in
-            print(category)
+        apiDataManager.performRequest(endpoint: .singleCategory(categoryID: id)) { [weak self] (category: SingleCategoryResponse) in
+            self?.fetchedResult = category.data
+            self?.completeUI()
         } onError: { error in
             print(error)
         }
@@ -57,14 +63,53 @@ class DetailViewController: UIViewController {
     
     private func requestAuthorDetail() {
         guard let id: String = viewableResultFromDashboard?.id else { return }
-        apiDataManager.performRequest(endpoint: .singleAuthor(authorID: id)) { (category: SingleAuthorResponse) in
-            print(category)
+        apiDataManager.performRequest(endpoint: .singleAuthor(authorID: id)) { [weak self] (author: SingleAuthorResponse) in
+            self?.fetchedResult = author.data
+            self?.completeUI()
         } onError: { error in
             print(error)
         }
     }
     
+    func createActivityIndicator() {
+        self.view.addSubview(activityView)
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+        activityView.startAnimating()
+    }
+    
+    func removeActivityIndicator() {
+        activityView.stopAnimating()
+        activityView.removeFromSuperview()
+    }
+    
     func completeUI() {
+        removeActivityIndicator()
+        guard let fetchedResult = fetchedResult else {
+            return
+        }
+        let title: String = fetchedResult.name
+        let headerView: DetailViewHeader = DetailViewHeader(frame: CGRect.zero, title: title)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(headerView)
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.padding),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding)
+        ])
         
+        guard let content: String = fetchedResult.content else { return }
+        
+        let contentView: DetailViewBody = DetailViewBody(frame: CGRect.zero, content: content, section: "Detail")
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: Constants.padding),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding)
+        ])
     }
 }

@@ -18,4 +18,8 @@ extension Book: ResultViewable {
     var slug: String? {
         return self.attributes.slug
     }
+    
+    var content: String? {
+        return self.attributes.content
+    }
 }

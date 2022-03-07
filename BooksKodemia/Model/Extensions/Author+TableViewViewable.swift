@@ -18,4 +18,8 @@ extension Authors: ResultViewable {
     var dataType: DataType {
         return .Author
     }
+    
+    var content: String? {
+        return nil
+    }
 }
