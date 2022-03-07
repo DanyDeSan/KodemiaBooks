@@ -11,6 +11,10 @@ struct AuthorsResponse: Codable {
     let data: [Authors]
 }
 
+struct SingleAuthorResponse: Codable {
+    let data: Authors
+}
+
 // MARK: - Datum
 struct Authors: Codable {
     let id: String

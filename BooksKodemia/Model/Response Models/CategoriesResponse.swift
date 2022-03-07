@@ -12,6 +12,10 @@ struct CategoriesResponse: Codable {
     let data: [Category]
 }
 
+struct SingleCategoryResponse: Codable {
+    let data: Category
+}
+
 // MARK: - Datum
 struct Category: Codable {
     let id: String

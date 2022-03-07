@@ -12,6 +12,10 @@ struct BooksResponse: Codable {
     let data: [Book]
 }
 
+struct SingleBookResponse: Codable {
+    let data: Book
+}
+
 // MARK: - Datum
 struct Book: Codable {
     let type, id: String

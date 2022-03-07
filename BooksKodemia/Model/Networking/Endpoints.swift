@@ -13,6 +13,10 @@ enum Endpoints {
     case categories
     case books
     
+    case singleAuthor(authorID: String)
+    case singleCategory(categoryID: String)
+    case singleBooks(bookSlug: String)
+    
     private var baseURL: URLComponents {
         var baseURL: URLComponents = URLComponents()
         baseURL.host = "playground-bookstore.herokuapp.com"
@@ -22,19 +26,21 @@ enum Endpoints {
     }
     
     var completeURL: URL? {
+        var baseURL: URLComponents = baseURL
         switch self {
         case .authors:
-            var baseURL: URLComponents = baseURL
             baseURL.path += "authors"
-            return baseURL.url
         case .categories:
-            var baseURL: URLComponents = baseURL
             baseURL.path += "categories"
-            return baseURL.url
         case .books:
-            var baseURL:URLComponents = baseURL
             baseURL.path += "books"
-            return baseURL.url
+        case .singleBooks(let bookSlug):
+            baseURL.path += "books/\(bookSlug)"
+        case .singleAuthor(let authorID):
+            baseURL.path += "authors/\(authorID)"
+        case .singleCategory(let categoryID):
+            baseURL.path += "categories/\(categoryID)"
         }
+        return baseURL.url
     }
 }

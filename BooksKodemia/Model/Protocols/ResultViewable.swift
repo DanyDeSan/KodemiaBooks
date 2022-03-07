@@ -11,4 +11,5 @@ protocol ResultViewable {
     var name: String { get }
     var id: String { get }
     var dataType: DataType { get }
+    var slug: String? { get }
 }

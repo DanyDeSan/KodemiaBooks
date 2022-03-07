@@ -14,4 +14,8 @@ extension Book: ResultViewable {
     var dataType: DataType {
         return .Book
     }
+    
+    var slug: String? {
+        return self.attributes.slug
+    }
 }

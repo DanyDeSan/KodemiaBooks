@@ -8,6 +8,10 @@
 import Foundation
 
 extension Authors: ResultViewable {
+    var slug: String? {
+        return nil
+    }
+    
     var name: String {
         return self.attributes.name
     }
